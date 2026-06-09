@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>OPTIMUS Smart CRM</title>
+
+<link
+rel="shortcut icon"
+href="{{ url_for('static', filename='favicon.png') }}"
+type="image/png">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content=
+"width=device-width,initial-scale=1.0">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href=
+"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap"
+rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2>
+
+🚀 Optimus 
+
+</h2>
+
+<ul>
+
+<li>
+<a href="#dashboard">
+📊 Dashboard
+</a>
+</li>
+
+<li>
+<a href="#customers">
+👥 Customers
+</a>
+</li>
+
+<li>
+<a href="#prediction">
+🧠 Predictions
+</a>
+</li>
+
+<li>
+<a href="#analytics">
+🎯 Analytics
+</a>
+</li>
+
+<li>
+<a href="#legend">
+🗺 Legend
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-content">
+
+<div class="container">
+
+<h1>
+
+🚀  OPTIMUS Smart CRM 
+
+</h1>
+
+<p class="subtitle">
+
+ AI Lead Intelligence System
+
+</p>
+
+<!-- KPI -->
+
+<div
+class="dashboard"
+id="dashboard">
+
+<div class="card">
+
+<h3>
+📈 Total Leads
+</h3>
+
+<p>
+{{ total }}
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+✅ Converted
+</h3>
+
+<p>
+{{ converted }}
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+🔥 Hot Leads
+</h3>
+
+<p>
+{{ hot }}
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+🎯 Accuracy
+</h3>
+
+<p>
+{{ accuracy }}%
+</p>
+
+</div>
+
+</div>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<a href="/add">
+
+<button>
+
+➕ Add Customer
+
+</button>
+
+</a>
+
+<a href="/export">
+
+<button>
+
+⬇ Export CSV
+
+</button>
+
+</a>
+<a href="/pdf">
+
+<button>
+
+📄 Export PDF
+
+</button>
+
+</a>
+<a href="/logout">
+
+<button>
+
+🚪 Logout
+
+</button>
+
+</a>
+
+<button
+onclick=
+"toggleTheme()">
+
+🌙 Theme
+
+</button>
+
+<form method="GET" action="/">
+
+<input
+type="text"
+name="q"
+id="searchBox"
+placeholder=
+"🔍 Search customer">
+
+<button>
+
+Search
+
+</button>
+
+<a href="/">
+
+<button
+type="button">
+
+❌ Clear
+
+</button>
+
+</a>
+
+</form>
+
+</div>
+
+<!-- ANALYTICS -->
+
+<div
+class="analytics"
+id="analytics">
+
+<div class="panel">
+
+<h2>
+📊 Source Performance
+</h2>
+
+{% for k,v in source_stats.items() %}
+
+<p>
+
+{{ k }}
+
+→
+
+{{ v }}
+
+</p>
+
+{% endfor %}
+
+</div>
+
+<div class="panel">
+
+<h2>
+🏙 City Analytics
+</h2>
+
+{% for k,v in city_stats.items() %}
+
+<p>
+
+{{ k }}
+
+→
+
+{{ v }}
+
+</p>
+
+{% endfor %}
+
+</div>
+
+<div class="panel">
+
+<h2>
+🎯 Funnel
+</h2>
+
+<p>
+Total → {{ total }}
+</p>
+
+<p>
+Interested → {{ interested }}
+</p>
+
+<p>
+Contacted → {{ contacted }}
+</p>
+
+<p>
+Converted → {{ converted }}
+</p>
+
+</div>
+
+</div>
+
+<!-- CHARTS -->
+
+<div
+class="chart-section"
+id="prediction">
+
+<div class="chart-card">
+
+<div class="chart-header">
+
+<h2>
+📈 City Lead Analytics
+</h2>
+
+<span>
+
+Customer spread by city
+
+</span>
+
+</div>
+
+<div class="chart-wrapper">
+
+<canvas id="cityChart"></canvas>
+
+</div>
+
+<div class="chart-info">
+
+<div>
+
+🏙 Best City
+
+<br>
+
+<b>
+
+{{ city_stats|list|first }}
+
+</b>
+
+</div>
+
+<div>
+
+👥 Total Cities
+
+<br>
+
+<b>
+
+{{ city_stats|length }}
+
+</b>
+
+</div>
+
+<div>
+
+📊 Coverage
+
+<br>
+
+<b>
+
+Lead Spread
+
+</b>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="chart-card">
+
+<div class="chart-header">
+
+<h2>
+🔥 Priority Intelligence
+</h2>
+
+<span>
+
+Lead quality overview
+
+</span>
+
+</div>
+
+<div class="chart-wrapper">
+
+<canvas
+id="priorityChart">
+
+</canvas>
+
+</div>
+
+<div class="chart-info">
+
+<div>
+
+🔥 Hot
+
+<br>
+
+<b>
+
+{{ hot }}
+
+</b>
+
+</div>
+
+<div>
+
+🟡 Warm
+
+<br>
+
+<b>
+
+{{ warm }}
+
+</b>
+
+</div>
+
+<div>
+
+❄ Cold
+
+<br>
+
+<b>
+
+{{ cold }}
+
+</b>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- TABLE -->
+
+<div
+class="table-box"
+id="customers">
+
+{% if total==0 %}
+
+<div class="empty">
+
+🪄 No customers
+
+</div>
+
+{% else %}
+
+{{ table|safe }}
+
+{% endif %}
+
+</div>
+
+<!-- LEGEND -->
+
+<div
+class="legend-panel"
+id="legend">
+
+<h2>
+
+🗺 AI Legend Center
+
+</h2>
+
+<div class="legend-grid">
+
+<div class="legend-card hot">
+
+🔥
+
+<h3>
+Segment 2
+</h3>
+
+<p>
+High Value
+</p>
+
+</div>
+
+<div class="legend-card warm">
+
+🟡
+
+<h3>
+Segment 1
+</h3>
+
+<p>
+Medium Value
+</p>
+
+</div>
+
+<div class="legend-card cold">
+
+❄
+
+<h3>
+Segment 0
+</h3>
+
+<p>
+Cold Lead
+</p>
+
+</div>
+
+<div class="legend-card convert">
+
+🧠
+
+<h3>
+Prediction 1
+</h3>
+
+<p>
+Likely Convert
+</p>
+
+</div>
+
+<div class="legend-card low">
+
+📉
+
+<h3>
+Prediction 0
+</h3>
+
+<p>
+Low Chance
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- AI -->
+
+<div class="ai-box">
+
+<h2>
+
+🧠 AI Control Center
+
+</h2>
+
+<p>
+
+👤 Top Lead:
+
+{{ top_lead['name'] }}
+
+</p>
+
+<p>
+
+🔥 Score:
+
+{{ top_lead['score'] }}
+
+</p>
+
+<p>
+
+📞 Recommendation:
+
+{{ top_lead['recommendation'] }}
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="toast">
+
+✅  Optimus Smart CRM Ready
+
+</div>
+
+<footer>
+
+🚀 Optimus Smart CRM
+
+<br>
+
+ AI Lead Intelligence System
+
+<br>
+
+Analytics Dashboard
+
+</footer>
+
+<script src=
+"https://cdn.jsdelivr.net/npm/chart.js">
+
+</script>
+
+<script src=
+"/static/theme.js">
+
+</script>
+
+<script src=
+"/static/search.js">
+
+</script>
+
+<script src=
+"/static/dashboard.js">
+
+</script>
+
+<script>
+
+const cityStats =
+{{ city_stats|tojson|safe }}
+
+const hot =
+{{ hot }}
+
+const warm =
+{{ warm }}
+
+const cold =
+{{ cold }}
+
+</script>
+
+<script src="/static/charts.js">
+
+</script>
+
+<script src="/static/confirm.js">
+
+</script>
+
+</body>
+
+</html>

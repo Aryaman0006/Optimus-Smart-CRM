@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Edit Customer</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="form-card">
+
+<h1>
+🛠 Edit Customer
+</h1>
+
+<form method="POST">
+
+<input
+type="text"
+name="name"
+value="{{ customer.name }}"
+required>
+
+<input
+type="email"
+name="email"
+value="{{ customer.email }}"
+required>
+
+<input
+type="text"
+name="phone"
+value="{{ customer.phone }}"
+required>
+
+<input
+type="text"
+name="city"
+value="{{ customer.city }}"
+required>
+
+<input
+type="number"
+name="source"
+value="{{ customer.source }}"
+required>
+
+<input
+type="number"
+name="interest_level"
+value="{{ customer.interest_level }}"
+required>
+
+<input
+type="number"
+name="last_contact_days"
+value="{{ customer.last_contact_days }}"
+required>
+
+<input
+type="number"
+name="converted"
+value="{{ customer.converted }}"
+required>
+
+<button type="submit">
+
+💾 Update Customer
+
+</button>
+
+</form>
+
+<br>
+
+<a href="/">
+
+<button>
+
+⬅ Dashboard
+
+</button>
+
+</a>
+
+</div>
+
+</body>
+
+</html>

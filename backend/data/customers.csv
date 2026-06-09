@@ -1,0 +1,21 @@
+customer_id,name,email,phone,city,source,interest_level,last_contact_days,converted
+1,Aryaman Jaiswal,aryaman.j@gmail.com,9876543210,Varanasi,Website,2,2,1
+2,Priya Sharma,priya.sharma@gmail.com,9812345678,Delhi,Instagram,1,9,0
+3,Riya Patel,riya.patel@gmail.com,9765432101,Surat,Website,0,21,0
+4,Karan Mehta,karan.mehta@gmail.com,9887612345,Jaipur,Referral,1,14,0
+5,Neha Verma,neha.verma@gmail.com,9823456712,Lucknow,Instagram,2,3,1
+6,Ankit Singh,ankit.singh@gmail.com,9756123489,Pune,LinkedIn,1,8,0
+7,Sneha Gupta,sneha.gupta@gmail.com,9891234567,Delhi,Instagram,2,1,1
+8,Aman Yadav,aman.yadav@gmail.com,9789012345,Mumbai,Website,1,16,0
+9,Pooja Mishra,pooja.m@gmail.com,9845612378,Kanpur,Referral,2,0,1
+10,Rohan Kapoor,rohan.kapoor@gmail.com,9871203456,Noida,LinkedIn,2,4,1
+11,Ananya Roy,ananya.roy@gmail.com,9811122233,Indore,Website,1,11,0
+12,Kabir Arora,kabir.arora@gmail.com,9833344455,Bhopal,Referral,2,2,1
+13,Meera Das,meera.das@gmail.com,9798765432,Patna,Instagram,0,19,0
+14,Arjun Nair,arjun.nair@gmail.com,9867543210,Nagpur,Website,2,3,1
+15,Diya Sen,diya.sen@gmail.com,9745612389,Agra,LinkedIn,1,10,0
+16,Vivaan Khanna,vivaan.kh@gmail.com,9819988776,Gurgaon,Referral,2,1,1
+17,Ritika Jain,ritika.j@gmail.com,9854321098,Chandigarh,Instagram,0,24,0
+18,Dev Malhotra,dev.malhotra@gmail.com,9877891234,Ahmedabad,Website,2,0,1
+19,Shruti Saxena,shruti.s@gmail.com,9767812345,Ranchi,LinkedIn,1,7,0
+20,Yash Tiwari,yash.tiwari@gmail.com,9898761234,Nashik,Referral,2,5,1
